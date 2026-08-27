@@ -1,17 +1,18 @@
-// Seleccionamos el elemento donde se muestra el valor
 const valorContador = document.getElementById('valor-contador');
-
-// Seleccionamos el botón
 const btnSumar = document.getElementById('btn-sumar');
+const btnRestar = document.getElementById('btn-restar');
 
-// Inicializamos el contador en 0
 let contador = 0;
 
-// Función que incrementa el contador y actualiza la vista
-function incrementarContador() {
-    contador = contador + 1;      // Aumentamos en 1
-    valorContador.textContent = contador;  // Mostramos el nuevo valor
+function incrementar() {
+    contador = contador + 1;
+    valorContador.textContent = contador;
 }
 
-// Escuchamos el evento 'click' del botón y ejecutamos la función
-btnSumar.addEventListener('click', incrementarContador);
+function decrementar() {
+    contador = contador - 1;
+    valorContador.textContent = contador;
+}
+
+btnSumar.addEventListener('click', incrementar);
+btnRestar.addEventListener('click', decrementar);
