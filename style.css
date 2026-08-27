@@ -33,7 +33,7 @@ header h1 {
     letter-spacing: 2px;
 }
 
-/* Main - Contenedor del contador */
+/* Main */
 main {
     flex: 1;
     display: flex;
@@ -59,12 +59,18 @@ main {
     font-size: 5rem;
     font-weight: 700;
     color: #0f172a;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     line-height: 1.2;
 }
 
-#btn-sumar {
-    background: linear-gradient(135deg, #059669, #0d9488);
+.botones {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+#btn-sumar,
+#btn-restar {
     color: white;
     border: none;
     padding: 16px 40px;
@@ -72,9 +78,13 @@ main {
     font-weight: 600;
     border-radius: 60px;
     cursor: pointer;
-    box-shadow: 0 8px 0 #065f46;
     transition: all 0.08s ease-in-out;
     letter-spacing: 1px;
+}
+
+#btn-sumar {
+    background: linear-gradient(135deg, #059669, #0d9488);
+    box-shadow: 0 8px 0 #065f46;
 }
 
 #btn-sumar:active {
@@ -84,6 +94,20 @@ main {
 
 #btn-sumar:hover {
     background: linear-gradient(135deg, #047857, #0d9488);
+}
+
+#btn-restar {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    box-shadow: 0 8px 0 #991b1b;
+}
+
+#btn-restar:active {
+    transform: translateY(6px);
+    box-shadow: 0 2px 0 #991b1b;
+}
+
+#btn-restar:hover {
+    background: linear-gradient(135deg, #b91c1c, #dc2626);
 }
 
 /* Footer */
