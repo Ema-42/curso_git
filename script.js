@@ -1,6 +1,7 @@
 const valorContador = document.getElementById('valor-contador');
 const btnSumar = document.getElementById('btn-sumar');
 const btnRestar = document.getElementById('btn-restar');
+const btnMultiplicar = document.getElementById('btn-multiplicar');
 
 let contador = 0;
 
@@ -14,5 +15,11 @@ function decrementar() {
     valorContador.textContent = contador;
 }
 
+function multiplicar() {
+    contador = contador * 2;
+    valorContador.textContent = contador;
+}
+
 btnSumar.addEventListener('click', incrementar);
 btnRestar.addEventListener('click', decrementar);
+btnMultiplicar.addEventListener('click', multiplicar);
