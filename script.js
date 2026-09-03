@@ -2,6 +2,7 @@ const valorContador = document.getElementById('valor-contador');
 const btnSumar = document.getElementById('btn-sumar');
 const btnRestar = document.getElementById('btn-restar');
 const btnMultiplicar = document.getElementById('btn-multiplicar');
+const btnResetear = document.getElementById('btn-resetear');
 const btnTema = document.getElementById('btn-tema');
 
 let contador = 0;
@@ -22,6 +23,11 @@ function multiplicar() {
     valorContador.textContent = contador;
 }
 
+function resetear() {
+    contador = 0;
+    valorContador.textContent = contador;
+}
+
 function cambiarTema() {
     temaOscuro = !temaOscuro;
     document.body.classList.toggle('tema-oscuro');
@@ -36,4 +42,5 @@ function cambiarTema() {
 btnSumar.addEventListener('click', incrementar);
 btnRestar.addEventListener('click', decrementar);
 btnMultiplicar.addEventListener('click', multiplicar);
+btnResetear.addEventListener('click', resetear);
 btnTema.addEventListener('click', cambiarTema);

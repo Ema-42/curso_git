@@ -111,6 +111,14 @@ main {
     width: 100%;
 }
 
+.contador-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
 .contador-container {
     background: var(--bg-container);
     padding: 50px 60px;
@@ -138,6 +146,12 @@ main {
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.reset-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 #btn-sumar,
@@ -194,6 +208,31 @@ main {
 
 #btn-multiplicar:hover {
     background: linear-gradient(135deg, #6d28d9, #7c3aed);
+}
+
+#btn-resetear {
+    color: white;
+    border: none;
+    padding: 16px 60px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: all 0.08s ease-in-out;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    box-shadow: 0 8px 0 #d97706;
+    color: #1f2937;
+    min-width: 200px;
+}
+
+#btn-resetear:active {
+    transform: translateY(6px);
+    box-shadow: 0 2px 0 #d97706;
+}
+
+#btn-resetear:hover {
+    background: linear-gradient(135deg, #d97706, #f59e0b);
 }
 
 /* Footer */
