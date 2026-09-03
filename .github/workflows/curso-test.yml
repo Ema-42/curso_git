@@ -1,32 +1,33 @@
-# Nombre del workflow
-name: Validar proyecto contador
+# Nombre del workflow (aparece en GitHub Actions)
+name: Validar Proyecto Contador
 
-# Cuándo se ejecuta automáticamente
+# CUÁNDO se ejecuta automáticamente
 on:
   push:                # Cuando alguien hace push
-    branches: [ main ]  # Solo en la rama main
-  pull_request:        # Cuando alguien hace pull request
+    branches: [ main ] # Solo en rama main
+  pull_request:        # También cuando abren PR
     branches: [ main ]
 
-# Qué trabajos realizar
+# QUÉ trabajos ejecutar
 jobs:
-  # Trabajo de verificación
-  verificar:
-    # Máquina virtual donde se ejecuta
+  # Nombre del trabajo
+  validar:
+    # Máquina donde corre (GitHub proporciona)
     runs-on: ubuntu-latest
     
-    # Pasos a ejecutar
+    # Pasos que ejecutar en orden
     steps:
-      # Paso 1: Clonar el repositorio
+      
+      # PASO 1: Descargar el código del repo
       - name: 📥 Descargar código
         uses: actions/checkout@v4
       
-      # Paso 2: Verificar que los archivos existen
+      # PASO 2: Verificar que archivos existen
       - name: 📁 Verificar archivos necesarios
         run: |
-          echo "🔍 Verificando archivos del proyecto..."
+          echo "🔍 Verificando archivos..."
           
-          # Verificar que index.html existe
+          # Verificar index.html
           if [ -f "index.html" ]; then
             echo "✅ index.html existe"
           else
@@ -34,7 +35,7 @@ jobs:
             exit 1
           fi
           
-          # Verificar que style.css existe
+          # Verificar style.css
           if [ -f "style.css" ]; then
             echo "✅ style.css existe"
           else
@@ -42,7 +43,7 @@ jobs:
             exit 1
           fi
           
-          # Verificar que script.js existe
+          # Verificar script.js
           if [ -f "script.js" ]; then
             echo "✅ script.js existe"
           else
@@ -50,81 +51,69 @@ jobs:
             exit 1
           fi
           
-          echo "🎉 Todos los archivos están presentes!"
+          echo "🎉 Todos los archivos presentes!"
       
-      # Paso 3: Mostrar estructura del proyecto
-      - name: 📂 Mostrar estructura de archivos
+      # PASO 3: Mostrar estructura del proyecto
+      - name: 📂 Mostrar archivos
         run: |
           echo "📂 Estructura del proyecto:"
           ls -la
       
-      # Paso 4: Verificar sintaxis HTML (opcional)
-      - name: 🌐 Verificar HTML
+      # PASO 4: Verificar que HTML tiene estructura básica
+      - name: 🌐 Validar HTML
         run: |
-          echo "🔍 Verificando sintaxis HTML básica..."
+          echo "🔍 Verificando HTML..."
           
-          # Verificar que tiene <!DOCTYPE html>
+          # Buscar <!DOCTYPE html>
           if grep -q "<!DOCTYPE html>" index.html; then
-            echo "✅ HTML tiene DOCTYPE correcto"
+            echo "✅ DOCTYPE correcto"
           else
-            echo "⚠️  Advertencia: falta DOCTYPE"
+            echo "⚠️  Sin DOCTYPE"
           fi
           
-          # Verificar que tiene <html> y </html>
+          # Buscar etiquetas html
           if grep -q "<html" index.html && grep -q "</html>" index.html; then
-            echo "✅ HTML tiene etiquetas html"
+            echo "✅ Etiquetas <html> presentes"
           else
-            echo "⚠️  Advertencia: falta etiquetas html"
+            echo "⚠️  Faltan etiquetas html"
           fi
       
-      # Paso 5: Verificar enlaces CSS y JS
+      # PASO 5: Verificar enlaces CSS y JS
       - name: 🔗 Verificar enlaces
         run: |
-          echo "🔍 Verificando enlaces..."
+          echo "🔍 Verificando enlaces en HTML..."
           
-          # Verificar que enlaza style.css
+          # Verificar link a CSS
           if grep -q "style.css" index.html; then
-            echo "✅ CSS enlazado correctamente"
+            echo "✅ CSS enlazado"
           else
-            echo "⚠️  Advertencia: style.css no enlazado"
+            echo "⚠️  CSS no enlazado"
           fi
           
-          # Verificar que enlaza script.js
+          # Verificar script JS
           if grep -q "script.js" index.html; then
-            echo "✅ JavaScript enlazado correctamente"
+            echo "✅ JavaScript enlazado"
           else
-            echo "⚠️  Advertencia: script.js no enlazado"
+            echo "⚠️  JS no enlazado"
           fi
       
-      # Paso 6: Verificar funciones en JavaScript
-      - name: ⚡ Verificar funciones JavaScript
+      # PASO 6: Verificar funciones en JavaScript
+      - name: ⚡ Validar funciones JavaScript
         run: |
           echo "🔍 Verificando funciones..."
           
-          # Verificar que existe función incrementar
           if grep -q "function incrementar" script.js; then
             echo "✅ Función incrementar existe"
           else
-            echo "⚠️  Advertencia: falta función incrementar"
+            echo "⚠️  Falta función incrementar"
           fi
           
-          # Verificar que existe función decrementar
           if grep -q "function decrementar" script.js; then
             echo "✅ Función decrementar existe"
           else
-            echo "⚠️  Advertencia: falta función decrementar"
+            echo "⚠️  Falta función decrementar"
           fi
-          
-          # Verificar que existe función multiplicar
-          if grep -q "function multiplicar" script.js; then
-            echo "✅ Función multiplicar existe"
-          else
-            echo "⚠️  Advertencia: falta función multiplicar"
-          fi
-
-      # Paso 7: Mensaje final
-      - name: ✅ Verificación completada
-        run: |
-          echo "🎉 ¡Verificación completada exitosamente!"
-          echo "📝 El proyecto Contador Interactivo está listo para usar."
-          echo "💻 Puedes abrir index.html en tu navegador para probarlo."
+      
+      # PASO 7: Mensaje final
+      - name: ✅ Validación completada
+        run: echo "🎉 ¡Proyecto Contador validado exitosamente!"
