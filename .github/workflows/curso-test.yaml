@@ -1,0 +1,111 @@
+#nombre del workflow
+name: Validar proyecto contador
+#cuando se va ejecutar el workflow
+on:
+  push: #cuando se haga push 
+    branches: [main]
+  pull_request:
+    branches: [main]
+#que va hacer el workflow, o que trabajo va a realizar
+jobs:
+  #nombre de nuestro trabajo
+  verificar:
+    #maquina virtual donde se va a ejecutar el trabajo
+    runs-on: ubuntu-latest
+    #pasos a realizar dentro del trabajo
+    steps:
+        # clonar el repositorio
+      - name: 📥 Descargar código
+        uses: actions/checkout@v4
+        #verificacion de existencia de archivos
+      - name: 📁 Verificar archivos necesarios
+        run: |
+          echo "🔍 Verificando archivos del proyecto..."
+
+          if [ -f "index.html" ]; then
+            echo "✅ index.html existe"
+          else
+            echo "❌ Error: falta index.html"
+            exit 1
+          fi
+
+          if [ -f "style.css" ]; then
+            echo "✅ style.css existe"
+          else
+            echo "❌ Error: falta style.css"
+            exit 1
+          fi
+
+          if [ -f "script.js" ]; then
+            echo "✅ script.js existe"
+          else
+            echo "❌ Error: falta script.js"
+            exit 1
+          fi
+
+          echo "🎉 Todos los archivos están presentes!"
+
+      - name: 📂 Mostrar estructura de archivos
+        run: |
+          echo "📂 Estructura del proyecto:"
+          ls -la
+
+      - name: 🌐 Verificar HTML
+        run: |
+          echo "🔍 Verificando sintaxis HTML básica..."
+
+          if grep -q "<!DOCTYPE html>" index.html; then
+            echo "✅ HTML tiene DOCTYPE correcto"
+          else
+            echo "⚠️  Advertencia: falta DOCTYPE"
+          fi
+
+          if grep -q "<html" index.html && grep -q "</html>" index.html; then
+            echo "✅ HTML tiene etiquetas html"
+          else
+            echo "⚠️  Advertencia: falta etiquetas html"
+          fi
+
+      - name: 🔗 Verificar enlaces
+        run: |
+          echo "🔍 Verificando enlaces..."
+
+          if grep -q "style.css" index.html; then
+            echo "✅ CSS enlazado correctamente"
+          else
+            echo "⚠️  Advertencia: style.css no enlazado"
+          fi
+
+          if grep -q "script.js" index.html; then
+            echo "✅ JavaScript enlazado correctamente"
+          else
+            echo "⚠️  Advertencia: script.js no enlazado"
+          fi
+
+      - name: ⚡ Verificar funciones JavaScript
+        run: |
+          echo "🔍 Verificando funciones..."
+
+          if grep -q "function incrementar" script.js; then
+            echo "✅ Función incrementar existe"
+          else
+            echo "⚠️  Advertencia: falta función incrementar"
+          fi
+
+          if grep -q "function decrementar" script.js; then
+            echo "✅ Función decrementar existe"
+          else
+            echo "⚠️  Advertencia: falta función decrementar"
+          fi
+
+          if grep -q "function multiplicar" script.js; then
+            echo "✅ Función multiplicar existe"
+          else
+            echo "⚠️  Advertencia: falta función multiplicar"
+          fi
+
+      - name: ✅ Verificación completada
+        run: |
+          echo "🎉 ¡Verificación completada exitosamente!"
+          echo "📝 El proyecto Contador Interactivo está listo para usar."
+          echo "💻 Puedes abrir index.html en tu navegador para probarlo."
