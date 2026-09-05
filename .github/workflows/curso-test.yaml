@@ -109,3 +109,7 @@ jobs:
           echo "🎉 ¡Verificación completada exitosamente!"
           echo "📝 El proyecto Contador Interactivo está listo para usar."
           echo "💻 Puedes abrir index.html en tu navegador para probarlo."
+      #mostrar valor de mi secret
+      - name: 🔑 Mostrar api key
+        run: |
+          echo "🔑 API Key: ${{ secrets.API_KEY }}"
