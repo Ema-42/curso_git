@@ -141,6 +141,51 @@ main {
     transition: color 0.3s ease;
 }
 
+.limites {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: var(--bg-container);
+    padding: 40px 60px;
+    margin: 30px 0;
+    width: min(100%, 700px);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.limites label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+.limites input {
+    width: 180px;
+    padding: 14px 18px;
+    font-size: 1.4rem;
+    text-align: center;
+    border: 2px solid #cbd5e1;
+    border-radius: 10px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.limites input:focus {
+    border-color: #0d9488;
+}
+
+body.tema-oscuro .limites input {
+    background: #1e1e1e;
+    color: #e5e5e5;
+    border-color: #444;
+}
+
 .botones {
     display: flex;
     gap: 20px;
@@ -151,16 +196,33 @@ main {
 .reset-container {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.nota-curso {
+    max-width: 720px;
+    text-align: center;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    background: var(--bg-container);
+    color: var(--text-color);
+    padding: 16px 24px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    transition: all 0.3s ease;
 }
 
 #btn-sumar,
 #btn-restar,
-#btn-multiplicar {
+#btn-multiplicar,
+#btn-dividir,
+#btn-potenciar {
     color: white;
     border: none;
-    padding: 16px 40px;
-    font-size: 1.8rem;
+    padding: 16px 32px;
+    font-size: 1.5rem;
     font-weight: 600;
     border-radius: 60px;
     cursor: pointer;
@@ -208,6 +270,34 @@ main {
 
 #btn-multiplicar:hover {
     background: linear-gradient(135deg, #6d28d9, #7c3aed);
+}
+
+#btn-dividir {
+    background: linear-gradient(135deg, #0891b2, #06b6d4);
+    box-shadow: 0 8px 0 #155e75;
+}
+
+#btn-dividir:active {
+    transform: translateY(6px);
+    box-shadow: 0 2px 0 #155e75;
+}
+
+#btn-dividir:hover {
+    background: linear-gradient(135deg, #0e7490, #0891b2);
+}
+
+#btn-potenciar {
+    background: linear-gradient(135deg, #db2777, #ec4899);
+    box-shadow: 0 8px 0 #9d174d;
+}
+
+#btn-potenciar:active {
+    transform: translateY(6px);
+    box-shadow: 0 2px 0 #9d174d;
+}
+
+#btn-potenciar:hover {
+    background: linear-gradient(135deg, #be185d, #db2777);
 }
 
 #btn-resetear {

@@ -19,16 +19,33 @@
 
     <main>
         <div class="contador-wrapper">
+            <div class="limites">
+                <label>
+                    Máximo
+                    <input type="number" id="input-maximo" value="10" />
+                </label>
+                <label>
+                    Mínimo
+                    <input type="number" id="input-minimo" value="0" />
+                </label>
+            </div>
             <div class="contador-container">
                 <p id="valor-contador">0</p>
                 <div class="botones">
                     <button id="btn-restar">Restar</button>
                     <button id="btn-sumar">Sumar</button>
                     <button id="btn-multiplicar">Multiplicar x2</button>
+                    <button id="btn-dividir">Dividir /2</button>
+                    <button id="btn-potenciar">Potenciar x²</button>
                 </div>
             </div>
             <div class="reset-container">
                 <button id="btn-resetear">🔄 Resetear</button>
+                <p class="nota-curso">
+                    Este proyecto fue desarrollado en un curso de Git y GitHub para
+                    comprender fundamentos vitales del control de versiones y sirvió
+                    para comprender el trabajo colaborativo.
+                </p>
             </div>
         </div>
     </main>

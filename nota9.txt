@@ -1,2 +1,0 @@
-contenido del file nota9.txt hola   
-hola esta es una edicion desde git bash

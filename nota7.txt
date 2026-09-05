@@ -1,1 +1,0 @@
-Hola soy el archivo nota7.txt soy solo una prueba para fetch
